@@ -1,0 +1,31 @@
+﻿@page
+@model NimmSpiel.Pages.LobbyModel
+@{
+}
+@inject ChatManager ChatManager
+
+<div class="text-center" id="lobbynameform">
+    <h1 class="display-4">LobbyChat</h1>
+    <p>Ihr Name:</p>
+    <div><input class="form-control" id="ihrname" /></div>
+    <br />
+    <div><button id="weiterbutton" class="btn btn-primary">Weiter</button></div>
+</div>
+
+
+
+<div class="row top-space" id="lobbychat" style="display:none">
+    <div class="col-lg-12">
+        <ul id="messages">
+            @foreach (var item in ChatManager.Messages)
+            {
+                <li>@item.UserId said: @item.Message</li>
+            }
+        </ul>
+        <input class="form-control" id="message-content" />
+    </div>
+</div>
+
+@section Scripts{
+    <script data-main="scripts/main" src="https://rawgit.com/radu-matei/websocket-manager/master/src/WebSocketManager.Client.TS/dist/WebSocketManager.js"></script>
+}
